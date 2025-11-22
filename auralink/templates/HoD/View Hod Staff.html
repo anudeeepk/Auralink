@@ -1,0 +1,90 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Sl. No. </div></td>#}
+{#      <td><div align="center">Name</div></td>#}
+{#      <td><div align="center">Department</div></td>#}
+{#      <td><div align="center">Phone No. </div></td>#}
+{#      <td><div align="center">Email Id </div></td>#}
+{#      <td><div align="center">Image</div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td><div align="center">{{ forloop.counter }}</div></td>#}
+{#      <td><div align="center">{{ i.name }}</div></td>#}
+{#      <td><div align="center">{{ i.DEPARTMENT.deptname}}</div></td>#}
+{#      <td><div align="center">{{ i.phone}}</div></td>#}
+{#      <td><div align="center">{{ i.email}}</div></td>#}
+{#      <td><div align="center"><img src="{{ i.image.url}}" width="100" height="100"/></div></td>#}
+{#      <td><p align="center"><a href="/edit_staff/{{ i.id }}">Edit</a></p>#}
+{#      <p align="center"><a href="/delete_hodstaff/{{ i.id }}">Delete</a></p>#}
+{#      <p align="center"><a href="view_examduty/{{ i.id }}">Allocate hall</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="6"><div align="center"><a href="/add_hodstaff">Add New </a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Staff List</h2>
+        <form id="form1" name="form1" method="post" action="">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Sl. No.</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Department</th>
+                        <th class="text-center">Phone No.</th>
+                        <th class="text-center">Email Id</th>
+                        <th class="text-center">Image</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in val %}
+                        <tr>
+                            <td class="text-center">{{ forloop.counter }}</td>
+                            <td class="text-center">{{ i.name }}</td>
+                            <td class="text-center">{{ i.DEPARTMENT.deptname }}</td>
+                            <td class="text-center">{{ i.phone }}</td>
+                            <td class="text-center">{{ i.email }}</td>
+                            <td class="text-center"><img src="{{ i.image.url }}" width="100" height="100" /></td>
+                            <td class="text-center">
+                                <a href="/edit_staff/{{ i.id }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="/delete_hodstaff/{{ i.id }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                                <a href="/view_examduty/{{ i.id }}" class="btn btn-info btn-sm">Allocate Hall</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            <a href="/add_hodstaff" class="btn btn-success">Add New Staff</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</body>
+{% endblock %}

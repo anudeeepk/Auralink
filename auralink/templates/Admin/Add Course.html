@@ -1,0 +1,115 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_course_post">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>Course Name </td>#}
+{#      <td><label>#}
+{#        #}
+{#        <div align="left">#}
+{#          <input type="text" name="textfield" />#}
+{#        </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Department</td>#}
+{#        <td><select name="textfield2" >#}
+{#            {% for i in val %}#}
+{#            <option value="{{ i.id }}">{{ i.deptname }}</option>#}
+{#            {% endfor %}#}
+{#        </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Duration</td>#}
+{#      <td><input type="text" name="textfield3" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="Add" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+{#</html>#}
+{% extends 'admin/index.html' %}
+
+{% block body %}
+<head>
+  <!-- Link to Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS to Change Textfield and Dropdown Colors -->
+  <style>
+    .custom-textfield {
+      background-color: #f0f8ff; /* Light blue background */
+      color: #333; /* Dark text color */
+      border: 2px solid #6c757d; /* Border color */
+    }
+
+    .custom-textfield:focus {
+      border-color: #007bff; /* Border color on focus */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow effect */
+    }
+
+    .custom-dropdown {
+      background-color: #f0f8ff; /* Light blue background */
+      color: #333; /* Dark text color */
+      border: 2px solid #6c757d; /* Border color */
+    }
+
+    .custom-dropdown:focus {
+      border-color: #007bff; /* Focus border color */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow effect */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Add New Course</h2>
+    <form id="form1" name="form1" method="post" action="/add_course_post#a">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="mb-3">
+            <label for="coursename" class="form-label">Course Name</label>
+            <input type="text" class="form-control custom-textfield" name="textfield" id="coursename" required pattern="[A-Z a-z.]{3,25}"/>
+          </div>
+
+          <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <select name="textfield2" class="form-select custom-dropdown" id="department" required pattern="[A-Z a-z.]{3,25}">
+              {% for i in val %}
+                <option value="{{ i.id }}">{{ i.deptname }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="duration" class="form-label">Duration</label>
+            <input type="number" class="form-control custom-textfield" name="textfield3" id="duration" required pattern="[0-9]{6}" />
+          </div>
+
+          <div class="text-center">
+            <button type="submit#a" class="btn btn-primary">Add Course</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+{% endblock %}
+

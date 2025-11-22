@@ -1,0 +1,81 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Exam Details </div></td>#}
+{#      <td><input type="text" name="textfield" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Student</div></td>#}
+{#      <td><input type="text" name="textfield2" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Exam Hall </div></td>#}
+{#      <td><select name="select">#}
+{#      </select>      </td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Seat No. </div></td>#}
+{#      <td><input type="text" name="textfield3" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input type="submit" name="Submit" value="Add" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Add Exam Details</h2>
+    <form id="form1" name="form1" method="post" action="">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <td><label for="exam_details">Exam Details</label></td>
+            <td><input type="text" class="form-control" name="textfield" id="exam_details" /></td>
+          </tr>
+          <tr>
+            <td><label for="student">Student</label></td>
+            <td><input type="text" class="form-control" name="textfield2" id="student" /></td>
+          </tr>
+          <tr>
+            <td><label for="exam_hall">Exam Hall</label></td>
+            <td>
+              <select name="select" id="exam_hall" class="form-control">
+                {% for hall in exam_halls %}
+                  <option value="{{ hall.id }}">{{ hall.name }}</option>
+                {% endfor %}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="seat_no">Seat No.</label></td>
+            <td><input type="text" class="form-control" name="textfield3" id="seat_no" /></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <input type="submit" name="Submit" value="Add" class="btn btn-success" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+</body>
+{% endblock %}

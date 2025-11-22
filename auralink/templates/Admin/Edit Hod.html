@@ -1,0 +1,150 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/edit_hod_post" enctype="multipart/form-data">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Name</div></td>#}
+{#      <td><label>#}
+{#        #}
+{#        <div align="left">#}
+{#          <input type="text" name="textfield10" value="{{ data.name }}" />#}
+{#        </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Department</div></td>#}
+{#      <td><input type="text" name="textfield2" value="{{ data.DEPARTMENT }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Phone Number </div></td>#}
+{#      <td><input type="text" name="textfield3" value="{{ data.phone }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Email Id </div></td>#}
+{#      <td><input type="text" name="textfield4" value="{{ data.email }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Qualification</div></td>#}
+{#      <td><input type="text" name="textfield5" value="{{ data.qualification }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Place</div></td>#}
+{#      <td><input type="text" name="textfield6" value="{{ data.place }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Post Office </div></td>#}
+{#      <td><input type="text" name="textfield7" value="{{ data.post}}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Pin Number </div></td>#}
+{#      <td><input type="text" name="textfield8" value="{{ data.pin }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Image</div></td>#}
+{#      <td><input type="file" name="textfield9" value="{{ data.image }}" /></td>#}
+{#    </tr>#}
+{##}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <label>#}
+{#        <input type="submit" name="Submit" value="Add" />#}
+{#        </label>#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+{#</html>#}
+{% extends 'admin/index.html' %}
+
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <h2>Edit HOD Details</h2>
+    <form id="form1" name="form1" method="post" action="/edit_hod_post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <td><div align="center">Name</div></td>
+            <td>
+              <input type="text" name="name" value="{{ data.name }}" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Department</div></td>
+            <td>
+                    <select name="select" >
+                                    {% for i in data1 %}
+                                        <option {{ i.id }}>{{ i.deptname }}</option>
+                {% endfor %}
+
+                    </select>
+{#              <input type="text" name="department" value="{{ data.DEPARTMENT }}" class="form-control" />#}
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Phone Number</div></td>
+            <td>
+              <input type="text" name="phone" value="{{ data.phone }}" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Email Id</div></td>
+            <td>
+              <input type="email" name="email" value="{{ data.email }}" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Qualification</div></td>
+            <td>
+              <input type="text" name="qualification" value="{{ data.qualification }}" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Place</div></td>
+            <td>
+              <input type="text" name="place" value="{{ data.place }}" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Post Office</div></td>
+            <td>
+              <input type="text" name="post" value="{{ data.post }}" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Pin Number</div></td>
+            <td>
+              <input type="text" name="pin" value="{{ data.pin }}" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td><div align="center">Image</div></td>
+            <td>
+              <input type="file" name="image" class="form-control" />
+              {% if data.image %}
+                <img src="{{ data.image.url }}" alt="Current Image" style="width: 100px; height: auto;"/>
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <input type="submit" name="Submit" value="Update" class="btn btn-primary" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+</body>
+{% endblock %}
+

@@ -1,0 +1,97 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'Exam Cell/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/edit_examtimetable_post">#}
+{##}
+{#<table width="200" border="1">#}
+{#  <tr>#}
+{#    <td><div align="center">Name</div></td>#}
+{#    <td><input type="text" name="textfield" value="{{ data.examname }}" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td><div align="center">Semester</div></td>#}
+{#    <td>#}
+{#      <div align="right">#}
+{#        <select name="select">#}
+{#            <OPTION>{{ data.semester }}</OPTION>#}
+{#            <OPTION>S1</OPTION>#}
+{#            <OPTION>S2</OPTION>#}
+{#            <OPTION>S3</OPTION>#}
+{#            <OPTION>S4</OPTION>#}
+{#            <OPTION>S5</OPTION>#}
+{#            <OPTION>S6</OPTION>#}
+{#            <OPTION>S7</OPTION>#}
+{#            <OPTION>S8</OPTION>#}
+{#        </select>#}
+{#        </div></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td><div align="center">Starting Date </div></td>#}
+{#    <td><input type="DATE" name="textfield2" value="{{ d }}" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td><div align="center">Status</div></td>#}
+{#    <td><input type="text" name="textfield5" value="{{ data.status }}" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td colspan="2"><div align="center">#}
+{#      <input type="submit" name="Submit" value="Add" />#}
+{#    </div></td>#}
+{#    </tr>#}
+{#</table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'Exam Cell/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Edit Exam Timetable</h2>
+
+        <form id="form1" name="form1" method="post" action="/edit_examtimetable_post">
+            <div class="form-group">
+                <label for="examname">Name</label>
+                <input type="text" class="form-control" id="examname" name="textfield" value="{{ data.examname }}" />
+            </div>
+
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select class="form-control" id="semester" name="select">
+                    <option value="{{ data.semester }}" selected>{{ data.semester }}</option>
+                    <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                    <option value="S3">S3</option>
+                    <option value="S4">S4</option>
+                    <option value="S5">S5</option>
+                    <option value="S6">S6</option>
+                    <option value="S7">S7</option>
+                    <option value="S8">S8</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="startdate">Starting Date</label>
+                <input type="date" class="form-control" id="startdate" name="textfield2" value="{{ d }}" />
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" class="form-control" id="status" name="textfield5" value="{{ data.status }}" />
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update Timetable</button>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

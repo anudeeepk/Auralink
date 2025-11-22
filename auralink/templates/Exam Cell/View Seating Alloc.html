@@ -1,0 +1,52 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'Exam Cell/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>Exam</td>#}
+{#      <td><select name="select">#}
+{#          {% for i in val  %}#}
+{#          <option value="{{ i.id }}">{{ i.examname }}</option>#}
+{#          {% endfor %}#}
+{#      </select>      </td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input type="submit" name="Submit" value="Generate" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'Exam Cell/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Generate Exam Details</h2>
+        <form id="form1" name="form1" method="post" action="/seat">
+            <div class="form-group">
+                <label for="examSelect">Select Exam</label>
+                <select class="form-control" name="select" id="examSelect">
+                    {% for i in val %}
+                        <option value="{{ i.id }}">{{ i.examname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="text-center mt-4">
+   <input type="submit" value="Next" class="btn btn-primary">           </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

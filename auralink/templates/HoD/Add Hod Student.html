@@ -1,0 +1,129 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form action="/add_hodstudent_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Name</div></td>#}
+{#      <td><input type="text" name="textfield" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Reg.No.</div></td>#}
+{#      <td><input type="text" name="textfield2" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Course</div></td>#}
+{#      <td><select name="select">#}
+{##}
+{#          {% for i in val %}#}
+{#          <option value="{{ i.id }}">{{ i.coursename}}</option>#}
+{#          {% endfor %}#}
+{##}
+{##}
+{#      </select></td>#}
+{#    </tr>#}
+{##}
+{#    <tr>#}
+{#      <td><div align="center">Semester</div></td>#}
+{#      <td><select name="select2">#}
+{#              <OPTION>S1</OPTION>#}
+{#              <OPTION>S2</OPTION>#}
+{#              <OPTION>S3</OPTION>#}
+{#              <OPTION>S4</OPTION>#}
+{#              <OPTION>S5</OPTION>#}
+{#              <OPTION>S6</OPTION>#}
+{#              <OPTION>S7</OPTION>#}
+{#              <OPTION>S8</OPTION>#}
+{#      </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Phone No. </div></td>#}
+{#      <td><input type="text" name="textfield3" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Email Id </div></td>#}
+{#      <td><input type="text" name="textfield4" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Image</div></td>#}
+{#      <td><input type="file" name="file" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input type="submit" name="Submit" value="Add" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Add Student</h2>
+        <form action="/add_hodstudent_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="textfield" id="name" placeholder="Enter Student's Name" />
+            </div>
+
+            <div class="form-group">
+                <label for="regNo">Reg.No.</label>
+                <input type="text" class="form-control" name="textfield2" id="regNo" placeholder="Enter Registration Number" />
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select class="form-control" name="select" id="course">
+                    {% for i in val %}
+                        <option value="{{ i.id }}">{{ i.coursename }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select class="form-control" name="select2" id="semester">
+                    <option>S1</option>
+                    <option>S2</option>
+                    <option>S3</option>
+                    <option>S4</option>
+                    <option>S5</option>
+                    <option>S6</option>
+                    <option>S7</option>
+                    <option>S8</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone No.</label>
+                <input type="text" class="form-control" name="textfield3" id="phone" placeholder="Enter Phone Number" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Id</label>
+                <input type="text" class="form-control" name="textfield4" id="email" placeholder="Enter Email Address" />
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" class="form-control-file" name="file" id="image" />
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,86 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Sl. No. </div></td>#}
+{#      <td><div align="center">Job File </div></td>#}
+{#      <td><div align="center">Job Description </div></td>#}
+{#      <td><div align="center">Posted Date </div></td>#}
+{#      <td><div align="center">Experience</div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td><div align="center">{{ forloop.counter }}</div></td>#}
+{#      <td><div align="center"></div>{{ i.name }}</td>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><p align="center"><a href="#">Edit</a></p>#}
+{#      <p align="center"><a href="#">Delete</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="6"><div align="center"><a href="/add_jobdetails">Add New </a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Job Details</h2>
+    <form id="form1" name="form1" method="post" action="">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="text-center">Sl. No.</th>
+              <th class="text-center">Job File</th>
+              <th class="text-center">Job Description</th>
+              <th class="text-center">Posted Date</th>
+              <th class="text-center">Experience</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in val %}
+              <tr>
+                <td class="text-center">{{ forloop.counter }}</td>
+                <td class="text-center">{{ i.jobfile }}</td>
+                <td class="text-center">{{ i.jobdescription }}</td> <!-- Assuming 'description' exists -->
+                <td class="text-center">{{ i.posteddate }}</td> <!-- Assuming 'posted_date' exists -->
+                <td class="text-center">{{ i.experience }} Years</td> <!-- Assuming 'experience' exists -->
+                <td class="text-center">
+{#                  <a href="/edit_jobdetails/{{ i.id }}" class="btn btn-primary btn-sm">Edit</a>#}
+                  <a href="/delete_jobdetails/{{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+{#            <tr>#}
+{#              <td colspan="6" class="text-center">#}
+{#                <a href="/add_jobdetails" class="btn btn-success">Add New</a>#}
+{#              </td>#}
+{#            </tr>#}
+          </tfoot>
+        </table>
+      </div>
+    </form>
+  </div>
+</body>
+{% endblock %}

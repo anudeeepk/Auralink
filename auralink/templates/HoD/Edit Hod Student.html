@@ -1,0 +1,126 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form action="/edit_hodstudent_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Name</div></td>#}
+{#      <td><input type="text" name="textfield" value="{{ data.name }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Reg.No.</div></td>#}
+{#      <td><input type="text" name="textfield2" value="{{ data.registerno }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Course</div></td>#}
+{#      <td><select name="select"#}
+{#      {% for i in val %}>#}
+{#          <option value="{{ i.id }}">{{ i.coursename }}</option>#}
+{#          {% endfor  %}#}
+{#      </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Semester</div></td>#}
+{#      <td><select name="select2">#}
+{#          <option>S1</option>#}
+{#          <option>S2</option>#}
+{#          <option>S3</option>#}
+{#          <option>S4</option>#}
+{#          <option>S5</option>#}
+{#          <option>S6</option>#}
+{#          <option>S7</option>#}
+{#          <option>S8</option>#}
+{#      </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Phone No. </div></td>#}
+{#      <td><input type="text" name="textfield3" value="{{ data.phone }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Email Id </div></td>#}
+{#      <td><input type="text" name="textfield4" value="{{ data.email }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Image</div></td>#}
+{#      <td><input type="file" name="file" value="{{ data.image }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input type="submit" name="Submit" value="Add" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Edit Student</h2>
+        <form action="/edit_hodstudent_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+            <table class="table table-bordered">
+                <tr>
+                    <td><div align="center">Name</div></td>
+                    <td><input type="text" name="textfield" class="form-control" value="{{ data.name }}" /></td>
+                </tr>
+                <tr>
+                    <td><div align="center">Reg.No.</div></td>
+                    <td><input type="text" name="textfield2" class="form-control" value="{{ data.registerno }}" /></td>
+                </tr>
+                <tr>
+                    <td><div align="center">Course</div></td>
+                    <td>
+                        <select name="select" class="form-control">
+                            {% for i in val %}
+                                <option value="{{ i.id }}" {% if i.id == data.course.id %}selected{% endif %}>{{ i.coursename }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><div align="center">Semester</div></td>
+                    <td>
+                        <select name="select2" class="form-control">
+                            <option value="S1" {% if data.semester == 'S1' %}selected{% endif %}>S1</option>
+                            <option value="S2" {% if data.semester == 'S2' %}selected{% endif %}>S2</option>
+                            <option value="S3" {% if data.semester == 'S3' %}selected{% endif %}>S3</option>
+                            <option value="S4" {% if data.semester == 'S4' %}selected{% endif %}>S4</option>
+                            <option value="S5" {% if data.semester == 'S5' %}selected{% endif %}>S5</option>
+                            <option value="S6" {% if data.semester == 'S6' %}selected{% endif %}>S6</option>
+                            <option value="S7" {% if data.semester == 'S7' %}selected{% endif %}>S7</option>
+                            <option value="S8" {% if data.semester == 'S8' %}selected{% endif %}>S8</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><div align="center">Phone No.</div></td>
+                    <td><input type="text" name="textfield3" class="form-control" value="{{ data.phone }}" /></td>
+                </tr>
+                <tr>
+                    <td><div align="center">Email Id</div></td>
+                    <td><input type="email" name="textfield4" class="form-control" value="{{ data.email }}" /></td>
+                </tr>
+                <tr>
+                    <td><div align="center">Image</div></td>
+                    <td><input type="file" name="file" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <input type="submit" name="Submit" class="btn btn-primary" value="Update" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+{% endblock %}

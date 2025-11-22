@@ -1,0 +1,105 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'Exam Cell/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_Examtimetable_post">#}
+{##}
+{#<table width="200" border="1">#}
+{#  <tr>#}
+{#    <td><div align="center">Name</div></td>#}
+{#    <td><input type="text" name="textfield" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td><div align="center">Semester</div></td>#}
+{#    <td>#}
+{#      <div align="right">#}
+{#        <select name="select">#}
+{#            <OPTION>S1</OPTION>#}
+{#            <OPTION>S2</OPTION>#}
+{#            <OPTION>S3</OPTION>#}
+{#            <OPTION>S4</OPTION>#}
+{#            <OPTION>S5</OPTION>#}
+{#            <OPTION>S6</OPTION>#}
+{#            <OPTION>S7</OPTION>#}
+{#            <OPTION>S8</OPTION>#}
+{#        </select>#}
+{#        </div></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td><div align="center">Starting Date </div></td>#}
+{#    <td><input type="DATE" name="textfield2" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td><div align="center">Status</div></td>#}
+{#    <td><input type="text" name="textfield5" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <td colspan="2"><div align="center">#}
+{#      <input type="submit" name="Submit" value="Add" />#}
+{#    </div></td>#}
+{#    </tr>#}
+{#</table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+{#</html>#}
+{% extends 'Exam Cell/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Add Exam Timetable</h2>
+
+        <form id="form1" name="form1" method="post" action="/add_Examtimetable_post">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Field</th>
+                        <th class="text-center">Input</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">Name</td>
+                        <td><input type="text" class="form-control" name="textfield" placeholder="Enter Name" /></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Semester</td>
+                        <td>
+                            <select class="form-control" name="select">
+                                <option>S1</option>
+                                <option>S2</option>
+                                <option>S3</option>
+                                <option>S4</option>
+                                <option>S5</option>
+                                <option>S6</option>
+                                <option>S7</option>
+                                <option>S8</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Starting Date</td>
+                        <td><input type="date" class="form-control" name="textfield2" /></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Status</td>
+                        <td><input type="text" class="form-control" name="textfield5" placeholder="Enter Status" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <button type="submit" class="btn btn-primary">Add Timetable</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+{% endblock %}

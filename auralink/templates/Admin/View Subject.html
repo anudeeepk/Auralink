@@ -1,0 +1,75 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Sl.No.</div></td>#}
+{#      <td><div align="center">Subject Name </div></td>#}
+{#      <td><div align="center">Course Id </div></td>#}
+{#      <td><div align="center">Semester</div></td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>{{ forloop.counter }}</td>#}
+{#      <td>{{ i.subname }}</td>#}
+{#      <td>{{ i.COURSE.coursename }}</td>#}
+{#      <td>&nbsp;{{ i.semester }}</td>#}
+{#      <td><div align="center">#}
+{#        <p><a href="/edit_subject/{{ i.id}}">Edit</a></p>#}
+{#        <p><a href="/delete_subject/{{ i.id}}">Delete</a></p>#}
+{#      </div></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="5"><div align="center"><a href="/add_Subject">Add New</a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}{#</html>#}
+{% extends 'admin/index.html' %}
+
+{% block body %}
+<body>
+  <form id="form1" name="form1" method="post" action="">
+    <div class="container mt-4">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="text-center">Sl. No.</th>
+            <th scope="col" class="text-center">Subject Name</th>
+            <th scope="col" class="text-center">Course Id</th>
+            <th scope="col" class="text-center">Semester</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in val %}
+          <tr>
+            <td class="text-center">{{ forloop.counter }}</td>
+            <td>{{ i.subname }}</td>
+            <td>{{ i.COURSE.coursename }}</td>
+            <td>{{ i.semester }}</td>
+            <td class="text-center">
+              <a href="/edit_subject/{{ i.id }}" class="btn btn-primary btn-sm">Edit</a>
+              <a href="/delete_subject/{{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="text-center mt-3">
+        <a href="/add_Subject#a" class="btn btn-success">Add New</a>
+      </div>
+    </div>
+  </form>
+</body>
+{% endblock %}

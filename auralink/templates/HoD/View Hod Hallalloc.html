@@ -1,0 +1,83 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Sl. No. </div></td>#}
+{#      <td><div align="center">Staff </div></td>#}
+{#      <td><div align="center">Exam Hall </div></td>#}
+{#      <td><div align="center">Subject </div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td><div align="center">{{ forloop.counter }}</div></td>#}
+{#      <td><div align="center">{{ i.STAFF.name}}</div></td>#}
+{#      <td><div align="center">{{ i.HALL.hallnumber}}</div></td>#}
+{#      <td><div align="center">{{ i.EXAMDETAILS.SUBJECT.subname}}</div></td>#}
+{#      <td><p align="center"><a href="#">Edit</a></p>#}
+{#      <p align="center"><a href="#">Delete</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="5"><div align="center"><a href="/add_examduty">Add New </a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Exam Duty List</h2>
+    <form id="form1" name="form1" method="post" action="">
+      {% csrf_token %}
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th><div align="center">Sl. No.</div></th>
+              <th><div align="center">Staff</div></th>
+              <th><div align="center">Exam Hall</div></th>
+              <th><div align="center">Subject</div></th>
+              <th><div align="center">Actions</div></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in val %}
+            <tr>
+              <td><div align="center">{{ forloop.counter }}</div></td>
+              <td><div align="center">{{ i.STAFF.name }}</div></td>
+              <td><div align="center">{{ i.HALL.hallnumber }}</div></td>
+              <td><div align="center">{{ i.EXAMDETAILS.SUBJECT.subname }}</div></td>
+              <td>
+                <div align="center">
+                  <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                  <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <a href="/add_examduty" class="btn btn-success">Add New</a>
+      </div>
+    </form>
+  </div>
+</body>
+{% endblock %}
+
+

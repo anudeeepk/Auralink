@@ -1,0 +1,101 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form action="/edit_hodstaff_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Name</div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield" value="{{ data.name }}" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Deapertment</div></td>#}
+{#      <td>#}
+{#        <div align="left">#}
+{#          <select name="select">#}
+{#          {% for i in val %}>#}
+{#          <option value="{{ i.id }}">{{ i.DEPARTMENT.deptname }}</option>#}
+{#          {% endfor  %}#}
+{#          </select>#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Phone No. </div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield2" value="{{ data.phone }}" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Email Id </div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield22" value="{{ data.email }}" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Image</div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="file" name="file" value="{{ data.image }}"  />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input name="Add2" type="submit" id="Add2" value="Submit" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <h2>Edit Staff Details</h2>
+    <form action="/edit_hodstaff_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+      <table class="table table-bordered">
+        <tr>
+          <td><label for="name">Name</label></td>
+          <td><input type="text" class="form-control" id="name" name="textfield" value="{{ data.name }}" /></td>
+        </tr>
+        <tr>
+          <td><label for="department">Department</label></td>
+          <td>
+            <select class="form-control" id="department" name="select">
+              {% for i in value %}
+                <option value="{{ i.id }}" {% if data.department_id == i.id %} selected {% endif %}>{{ i.deptname }}</option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="phone">Phone No.</label></td>
+          <td><input type="text" class="form-control" id="phone" name="textfield2" value="{{ data.phone }}" /></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email Id</label></td>
+          <td><input type="email" class="form-control" id="email" name="textfield22" value="{{ data.email }}" /></td>
+        </tr>
+        <tr>
+          <td><label for="image">Image</label></td>
+          <td><input type="file" class="form-control" id="image" name="file" value="{{ data.image }}" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center">
+            <button type="submit" class="btn btn-primary" id="Add2" name="Add2">Submit</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</body>
+{% endblock %}

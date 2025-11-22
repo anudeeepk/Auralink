@@ -1,0 +1,132 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{##}
+{##}
+{#{% extends 'Exam Cell/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Date</div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><div align="center"><a href="#">Timetable</a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+
+{% extends 'Exam Cell/index.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Timetable Page</title>
+    <style>
+        /* General reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Form and table container */
+        #form1 {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table header */
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Table cells */
+        td {
+            font-size: 16px;
+        }
+
+        /* Link styling */
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+
+        /* Centering the form content */
+        .form-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Styling for the body section */
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="form-content">
+        <form id="form1" name="form1" method="post" action="">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <td><div align="center"></div></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="#">Timetable</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+{% endblock %}
+</html>

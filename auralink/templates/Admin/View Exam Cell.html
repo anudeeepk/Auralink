@@ -1,0 +1,87 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Sl. No. </div></td>#}
+{#      <td><div align="center">name </div></td>#}
+{#      <td><div align="center">phone</div></td>#}
+{#      <td><div align="center">email</div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>{{ forloop.counter }}</td>#}
+{#      <td>&nbsp;{{ i.name }}</td>#}
+{#      <td>&nbsp;{{ i.phone }}</td>#}
+{#      <td>&nbsp;{{ i.email }}</td>#}
+{#      <td><p align="center"><a href="/edit_examcell/{{ i.id }}">Edit</a></p>#}
+{#      <p align="center"><a href="/delete_examcell/{{ i.LOGIN.id}}">Delete</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="5"><div align="center"><a href="/add_Examcell">Add New</a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+{#</html>#}
+{% extends 'admin/index.html' %}
+
+{% block head %}
+  <style>
+    /* Custom border color for table */
+    .table-bordered {
+      border: 2px solid #ff5733 !important; /* Example: Red border color with !important */
+    }
+    .table-bordered th,
+    .table-bordered td {
+      border-color: #ff5733 !important; /* Example: Red border color with !important */
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+<body>
+  <form id="form1" name="form1" method="post" action="">
+    <div class="container mt-4">
+      <table class="table table-bordered table-striped" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="text-center">Sl. No.</th>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Phone</th>
+            <th scope="col" class="text-center">Email</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in val %}
+          <tr>
+            <td class="text-center">{{ forloop.counter }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.phone }}</td>
+            <td>{{ i.email }}</td>
+            <td class="text-center">
+              <a href="/edit_examcell/{{ i.id }}" class="btn btn-primary btn-sm">Edit</a>
+              <a href="/delete_examcell/{{ i.LOGIN.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="text-center">
+        <a href="/add_Examcell#a" class="btn btn-success">Add New</a>
+      </div>
+    </div>
+  </form>
+</body>
+{% endblock %}

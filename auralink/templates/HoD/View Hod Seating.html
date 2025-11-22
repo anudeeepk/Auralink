@@ -1,0 +1,78 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Sl.No.</div></td>#}
+{#      <td><div align="center">Exam Details </div></td>#}
+{#      <td><div align="center">Student</div></td>#}
+{#      <td><div align="center">Exam Hall</div></td>#}
+{#      <td><div align="center">Seat No. </div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><div align="center"></div></td>#}
+{#      <td><p align="center"><a href="#">Edit</a></p>#}
+{#      <p align="center"><a href="#">Delete</a></p></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="6"><div align="center"><a href="#">Add New </a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Exam Details</h2>
+    <form id="form1" name="form1" method="post" action="">
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th class="text-center">Sl.No.</th>
+            <th class="text-center">Exam Details</th>
+            <th class="text-center">Student</th>
+            <th class="text-center">Exam Hall</th>
+            <th class="text-center">Seat No.</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">Example Exam</td>
+            <td class="text-center">John Doe</td>
+            <td class="text-center">Hall 1</td>
+            <td class="text-center">A1</td>
+{#            <td class="text-center">#}
+{#              <a href="#" class="btn btn-primary btn-sm">Edit</a>#}
+{#              <a href="#" class="btn btn-danger btn-sm">Delete</a>#}
+{#            </td>#}
+          </tr>
+          <!-- Repeat above <tr> for more records -->
+        </tbody>
+      </table>
+    </form>
+
+{#    <div class="text-center mt-3">#}
+{#      <a href="#" class="btn btn-success">Add New</a>#}
+{#    </div>#}
+  </div>
+</body>
+{% endblock %}

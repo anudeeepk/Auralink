@@ -1,0 +1,34 @@
+
+{% extends 'Exam Cell/index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class ="table table-primary">
+    <tr>
+      <td>Date </td>
+      <td>Time</td>
+        <td></td>
+        <td></td>
+    </tr>
+      {% for i in val %}
+      <tr>
+          <td>{{ i.date }}</td>
+          <td>{{ i.time }}</td>
+          {% if i.st == "no" %}
+              <td></td>
+          <td><a href="/generateseat/{{ i.date }}/{{ i.time }}/{{ i.timetableid }}">Seating</a></td>
+      {% else %}
+       <td>Seat Allocated &nbsp;&nbsp;&nbsp;&nbsp;<a href="/generateseat/{{ i.date }}/{{ i.time }}/{{ i.timetableid }}">view seat</a></td>
+      {% endif %}
+
+      </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+
+{% endblock %}

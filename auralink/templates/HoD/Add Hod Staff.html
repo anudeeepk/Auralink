@@ -1,0 +1,101 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'HoD/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form action="/add_hodstaff_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Name</div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Department</div></td>#}
+{#      <td>#}
+{#        <div align="left">#}
+{#          <select name="select">#}
+{#              {% for i in val %}#}
+{#              <option value="{{ i.DEPARTMENT.id }}">{{ i.DEPARTMENT.deptname }}</option>#}
+{#              {% endfor %}#}
+{#          </select>#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Phone No. </div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield2" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Email Id </div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield22" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Image</div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="file" name="file" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input name="Add2" type="submit" id="Add2" value="Add" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'HoD/index.html' %}
+
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <h2>Add New Staff</h2>
+    <form action="/add_hodstaff_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+      <table class="table table-bordered">
+        <tr>
+          <td><label for="name" class="text-center">Name</label></td>
+          <td><input type="text" class="form-control" id="name" name="textfield" required pattern="[A-Z a-z.]{3,25}"/></td>
+        </tr>
+        <tr>
+          <td><label for="department" class="text-center">Department</label></td>
+          <td>
+            <select class="form-control" id="department" name="select" required pattern="[A-Z a-z.]{3,25}">
+              {% for i in value %}
+                <option value="{{ i.id }}">{{ i.deptname }}</option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="phone" class="text-center">Phone No.</label></td>
+          <td><input type="text" class="form-control" id="phone" name="textfield2" required pattern="[6789][0-9]{9}" /></td>
+        </tr>
+        <tr>
+          <td><label for="email" class="text-center">Email Id</label></td>
+          <td><input type="email" class="form-control" id="email" name="textfield22" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"/></td>
+        </tr>
+        <tr>
+          <td><label for="image" class="text-center">Image</label></td>
+          <td><input type="file" class="form-control" id="image" name="file" required /></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center">
+            <button type="submit" class="btn btn-primary" id="Add2" name="Add2">Add</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</body>
+{% endblock %}

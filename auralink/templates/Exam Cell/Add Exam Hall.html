@@ -1,0 +1,72 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'Exam Cell/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_Examhall_post">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Hall Number </div></td>#}
+{#      <td><label>#}
+{#        #}
+{#        <div align="left">#}
+{#          <input type="text" name="textfield" />#}
+{#        </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Details</div></td>#}
+{#      <td><input type="text" name="textfield2" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center">Nummber of Seats </div></td>#}
+{#      <td><input type="text" name="textfield3" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="Add" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#  <div align="center"></div>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'Exam Cell/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Add Exam Hall</h2>
+
+        <form id="form1" name="form1" method="post" action="/add_Examhall_post">
+            <div class="form-group">
+                <label for="hallnumber">Hall Number</label>
+                <input type="text" class="form-control" id="hallnumber" name="textfield" placeholder="Enter Hall Number">
+            </div>
+
+            <div class="form-group">
+                <label for="details">Details</label>
+                <input type="text" class="form-control" id="details" name="textfield2" placeholder="Enter Details">
+            </div>
+
+            <div class="form-group">
+                <label for="seats">Number of Seats</label>
+                <input type="number" class="form-control" id="seats" name="textfield3" placeholder="Enter Number of Seats">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Add Exam Hall</button>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

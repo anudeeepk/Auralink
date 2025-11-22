@@ -1,0 +1,61 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 200px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="">
+{#<div class="card">#}
+{#  <img src="img_avatar.png" alt="Avatar" style="width:100%">#}
+{#  <div class="container">#}
+
+ {% for i in val %}
+     <h2>{{ i.hid }}    </h2>
+     <h3>{{ i.sname }}    </h3>
+     <table class="table ">
+      <tr>
+     {% for j in i.slist %}
+<td>
+         <div class="card">
+<div align="center">
+    <img src="{{ j.sidimage }}" width="100" height="100"/>
+</div>
+
+      <h3>{{ j.sno }}</h3>
+      <p>{{ j.sidname }}</p>
+
+  </div>
+         </div>
+
+         </td>
+
+{#         <td>{{ j.sno }} - {{ j.sidname }}</td>#}
+ {%  if forloop.counter|divisibleby:4 %}
+                <tr></tr>
+            {%endif%}
+         {% endfor %}
+     </tr>
+         </table>
+    {% endfor %}
+{#</div>#}
+{#</div>#}
+</form>
+</body>
+
+{% endblock %}

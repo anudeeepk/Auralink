@@ -1,0 +1,86 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'Exam Cell/index.html' %}#}
+{##}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td><div align="center">Sl.No.</div></td>#}
+{#      <td><div align="center">Name</div></td>#}
+{#      <td><div align="center">Date</div></td>#}
+{#      <td><div align="center">Semester</div></td>#}
+{#      <td><div align="center">Starting Date </div></td>#}
+{#      <td><div align="center">Status</div></td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>{{ forloop.counter }}</td>#}
+{#      <td>{{ i.examname }}</td>#}
+{#      <td>{{ i.date }}</td>#}
+{#      <td>{{ i.semester }}</td>#}
+{#      <td>{{ i.startingdate }}</td>#}
+{#      <td>{{ i.status }}</td>#}
+{#      <td><p align="center"><a href="/edit_examtimetable/{{ i.id }}">Edit</a></p>#}
+{#      <p align="center"><a href="/delete_examtimetable/{{ i.id }}">Delete</a></p>#}
+{#      <p align="center"><a href="/view_examdetails/{{ i.id }}">Subjects</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="7"><div align="center"><a href="/add_Examtimetable">Add New</a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'Exam Cell/index.html' %}
+
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Exam Timetable</h2>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Sl.No.</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Semester</th>
+                    <th class="text-center">Starting Date</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in val %}
+                <tr>
+                    <td class="text-center">{{ forloop.counter }}</td>
+                    <td>{{ i.examname }}</td>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.semester }}</td>
+                    <td>{{ i.startingdate }}</td>
+                    <td>{{ i.status }}</td>
+                    <td class="text-center">
+                        <a href="/edit_examtimetable/{{ i.id }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/delete_examtimetable/{{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="/gentimetable/{{ i.id }}" class="btn btn-info btn-sm">Generate</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="/add_Examtimetable" class="btn btn-primary">Add New Exam Timetable</a>
+        </div>
+    </div>
+</body>
+{% endblock %}
